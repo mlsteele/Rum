@@ -1,0 +1,30 @@
+from defaults import *
+
+SECRET_KEY = ''
+
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+MANAGERS = ADMINS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+DEBUG = TEMPLATE_DEBUG = False
+
+MEDIA_ROOT = 'media/'
+
+MEDIA_URL = 'media/'
+
+STATIC_ROOT = 'static/'
+
+STATIC_URL = '/static/'
