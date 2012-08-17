@@ -1,0 +1,47 @@
+This setup guide assumes your build environment is setup, and you are running ubuntu
+
+Ubuntu: sudo apt-get install build-essential libtool autoconf automake 
+
+== Install Mongrel2==
+
+
+	Install ZMQ
+		sudo apt-get install uuid-dev
+		sudo apt-get install libsqlite3-dev	
+
+		sudo apt-get install uuid-runtime
+		wget http://download.zeromq.org/zeromq-2.2.0.tar.gz 
+		tar -xzvf zeromq-2.2.0.tar.gz
+		cd zeromq-2.2.0/
+		./configure
+		make 
+		sudo make install
+
+	Install Mongrel2
+		wget http://mongrel2.org/static/downloads/mongrel2-1.7.5.tar.bz2
+		tar -jxvf mongrel2-1.7.5.tar.bz2
+		cd mongrel2-1.7.5
+		make
+		sudo make install
+
+
+	
+
+Install WSGID
+	wget http://wsgid.com/static/downloads/wsgid-0.7.0.tar.bz2
+	tar -jzvf wsgid-0.7.0.tar.bz2
+	cd wsgid-0.7.0
+	sudo python setup.py install
+
+	(this requires python-dev and python-setuptools)
+
+virtualENV
+Install DJANGO
+
+Install Postgresql
+http://blog.iiilx.com/programming/how-to-install-postgres-on-ubuntu-for-django/
+
+
+Setup usernames and passwords in django
+
+
