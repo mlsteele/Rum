@@ -2,4 +2,6 @@
 *.pot
 *.pyc
 *.swp
+*.sqlite
 local.py
+
