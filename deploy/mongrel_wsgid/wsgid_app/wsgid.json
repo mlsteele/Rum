@@ -1,6 +1,0 @@
-{
-  "keep_alive": "True",
-  "recv": "tcp://127.0.0.1:9997",
-  "send": "tcp://127.0.0.1:9996",
-  "django": "True"
-}

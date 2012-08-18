@@ -4,4 +4,4 @@
 *.swp
 *.sqlite
 local.py
-
+wsgid.json
