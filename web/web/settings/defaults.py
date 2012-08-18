@@ -65,16 +65,16 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
 
-    'web.music',
+    'web.main',
 )
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGIN_REDIRECT_URL_FAILURE = '/'
+LOGIN_REDIRECT_URL_FAILURE = '/login-failed'
 
 BROWSERID_CREATE_USER = True
 
 def username(email):
-    return email.rsplit('@', 1)[0]
+    return email.replace('@', '_')
 
 BROWSERID_USERNAME_ALGO = username
