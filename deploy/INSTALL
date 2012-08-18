@@ -46,8 +46,11 @@ Install WSGID
 	connected
 	sudo apt-get install python-dev python-setuptools
 	workon prod 		# uses the virtual environemnt you created above
-	wget http://wsgid.com/static/downloads/wsgid-0.7.0.tar.bz2
-	pip install wsgid-0.7.0.tar.bz2
+	git clone git://github.com/igutekunst/wsgid.git
+	cd wsgid
+	sudo python setup.py intall 
+
+
 
 
 
@@ -112,9 +115,16 @@ If your mongrel server and wsgid servers are running on the same machine, the ex
 
 Create the sqlite db mongrel uses for runtime configuration
 cd rum/deploy/mongrel_wsgid/mongrel
+mkdir logs
+mkdir tmp
+mkdir run
 m2sh load -config rum.conf
 
 To test things out run m2sh start -name main
+cd rum/deploy/mongrel_wsgid/wsgid_app
+mkdir tmp
+mkdir logs
+wsgid --debug
 
 
 
