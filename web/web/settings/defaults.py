@@ -68,9 +68,11 @@ INSTALLED_APPS = (
     'web.main',
 )
 
+LOGIN_URL = '/login/'
+
 LOGIN_REDIRECT_URL = '/'
 
-LOGIN_REDIRECT_URL_FAILURE = '/login-failed'
+LOGIN_REDIRECT_URL_FAILURE = '/login-failed/'
 
 BROWSERID_CREATE_USER = True
 

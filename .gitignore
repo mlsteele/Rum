@@ -1,3 +1,4 @@
+*.orig
 *.log
 *.pot
 *.pyc
@@ -6,3 +7,4 @@
 local.py
 wsgid.json
 rum.conf
+.DS_STORE
