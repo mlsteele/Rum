@@ -5,3 +5,4 @@
 *.sqlite
 local.py
 wsgid.json
+rum.conf
