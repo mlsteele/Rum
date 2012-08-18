@@ -6,11 +6,11 @@ def path(location):
     return os.path.join(PROJECT_MODULE, location)
 
 TEMPLATE_DIRS = (
-    path('music/templates')
+    path('main/templates')
 )
 
 STATICFILES_DIRS = (
-    path('music/static'),
+    path('main/static'),
 )
 
 TIME_ZONE = 'America/New_York'
