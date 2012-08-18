@@ -71,3 +71,10 @@ INSTALLED_APPS = (
 LOGIN_REDIRECT_URL = '/'
 
 LOGIN_REDIRECT_URL_FAILURE = '/'
+
+BROWSERID_CREATE_USER = True
+
+def username(email):
+    return email.rsplit('@', 1)[0]
+
+BROWSERID_USERNAME_ALGO = username
