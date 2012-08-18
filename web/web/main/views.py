@@ -18,3 +18,4 @@ def home(request):
 @receiver(signals.user_created)
 def user_created(sender, user, **kwargs):
     user.is_active = False
+    user.save()
