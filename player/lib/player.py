@@ -1,6 +1,6 @@
 import time, sys 
-from rum import Client
-from  lib.VLCPlayer import Player
+import rum_client as rum
+from  VLCPlayer import Player
 
 
 
@@ -12,17 +12,15 @@ else:
     print "Usage: python bemix.py nodename"
 
 player = Player()
-r = Client("isaac", "pete")
+r = rum.RumClient("isaac", "pete")
 if r.authenticate():
     print "Authenticated"
 else:
     print "auth failed"
 
 def parse_server_update(update):
-    songs = update["songs"]
-    player.load_url(songs[0])
-    player.play()
-    return
+    for song in update.songs:
+        player.load_url(song.url)
     player.unload()
 
     if song != None:
@@ -31,10 +29,11 @@ def parse_server_update(update):
         elif res['state'] == 'paused':
             player.pause()
 
-r.register_message_handler(parse_server_update)
+r.register_server_callback(parse_server_update)
 r.setDaemon(True)
 r.start()
 
 
 while True:
     time.sleep(.1)
+
