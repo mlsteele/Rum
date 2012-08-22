@@ -15,10 +15,11 @@ message TokenMessage {
 }
 
 message AuthMessage {
-	enum Type { CHALLENGE = 1; RESPONSE = 2; TOKEN = 3; HELLO = 4; }	
+	enum Type { CHALLENGE = 1; RESPONSE = 2; TOKEN = 3; HELLO = 4; ERROR = 5;}	
 	required Type type = 1;
 	optional ChallengeMessage challenge = 2;
 	optional ResponseMessage response = 3;
 	optional TokenMessage token = 4;
 	optional HelloMessage hello = 5;
+    optional string error_message = 6;
 }

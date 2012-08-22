@@ -1,19 +1,17 @@
-import zmq, hashlib
+import zmq, hashlib, auth_pb2
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://rum.mit.edu:5000")
 SECRET = 'omgsecret'
 def auth():
-    socket.send("auth#isaac")
+    auth_message = auth_pb2.AuthMessage()
+    auth_message.type = auth_pb2.AuthMessage.HELLO
+    hello = auth_pb2.HelloMessage()
+    auth_message.hello.name = "isaac"
+    socket.send(auth_message.SerializeToString())
 
-    challenge = socket.recv().split("#")
-    if challenge[0] == "challenge":
-
-        response = "response#" + challenge[1] + "#" + hashlib.sha256(challenge[1] +
-                                                SECRET).hexdigest()
-        socket.send(response)
-        print socket.recv()
-
-
-
+    data = socket.recv()
+    response_auth_message = auth_pb2.AuthMessage()
+    response_auth_message.ParseFromString(data)
+    print response_auth_message
 auth()
