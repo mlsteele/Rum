@@ -1,25 +1,11 @@
-message ChallengeMessage {
-	required string nonce = 1;
-}
-message HelloMessage {
-	required string name = 1;
-}
-message ResponseMessage {
-	required string nonce = 1;
-	required string name = 2;
-	required string response = 3;
-}
 
-message TokenMessage {
-	required string token = 1;
-}
 
 message AuthMessage {
 	enum Type { CHALLENGE = 1; RESPONSE = 2; TOKEN = 3; HELLO = 4; ERROR = 5;}	
 	required Type type = 1;
-	optional ChallengeMessage challenge = 2;
-	optional ResponseMessage response = 3;
-	optional TokenMessage token = 4;
-	optional HelloMessage hello = 5;
+    required string name = 2;
+    optional string nonce = 3;
+    optional string response = 4;
+    optional string token = 5;
     optional string error_message = 6;
 }

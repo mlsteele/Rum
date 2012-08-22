@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='auth.proto',
   package='',
-  serialized_pb='\n\nauth.proto\"!\n\x10\x43hallengeMessage\x12\r\n\x05nonce\x18\x01 \x02(\t\"\x1c\n\x0cHelloMessage\x12\x0c\n\x04name\x18\x01 \x02(\t\"@\n\x0fResponseMessage\x12\r\n\x05nonce\x18\x01 \x02(\t\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x10\n\x08response\x18\x03 \x02(\t\"\x1d\n\x0cTokenMessage\x12\r\n\x05token\x18\x01 \x02(\t\"\x91\x02\n\x0b\x41uthMessage\x12\x1f\n\x04type\x18\x01 \x02(\x0e\x32\x11.AuthMessage.Type\x12$\n\tchallenge\x18\x02 \x01(\x0b\x32\x11.ChallengeMessage\x12\"\n\x08response\x18\x03 \x01(\x0b\x32\x10.ResponseMessage\x12\x1c\n\x05token\x18\x04 \x01(\x0b\x32\r.TokenMessage\x12\x1c\n\x05hello\x18\x05 \x01(\x0b\x32\r.HelloMessage\x12\x15\n\rerror_message\x18\x06 \x01(\t\"D\n\x04Type\x12\r\n\tCHALLENGE\x10\x01\x12\x0c\n\x08RESPONSE\x10\x02\x12\t\n\x05TOKEN\x10\x03\x12\t\n\x05HELLO\x10\x04\x12\t\n\x05\x45RROR\x10\x05')
+  serialized_pb='\n\nauth.proto\"\xc9\x01\n\x0b\x41uthMessage\x12\x1f\n\x04type\x18\x01 \x02(\x0e\x32\x11.AuthMessage.Type\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05nonce\x18\x03 \x01(\t\x12\x10\n\x08response\x18\x04 \x01(\t\x12\r\n\x05token\x18\x05 \x01(\t\x12\x15\n\rerror_message\x18\x06 \x01(\t\"D\n\x04Type\x12\r\n\tCHALLENGE\x10\x01\x12\x0c\n\x08RESPONSE\x10\x02\x12\t\n\x05TOKEN\x10\x03\x12\t\n\x05HELLO\x10\x04\x12\t\n\x05\x45RROR\x10\x05')
 
 
 
@@ -44,134 +44,8 @@ _AUTHMESSAGE_TYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=382,
-  serialized_end=450,
-)
-
-
-_CHALLENGEMESSAGE = descriptor.Descriptor(
-  name='ChallengeMessage',
-  full_name='ChallengeMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='nonce', full_name='ChallengeMessage.nonce', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=14,
-  serialized_end=47,
-)
-
-
-_HELLOMESSAGE = descriptor.Descriptor(
-  name='HelloMessage',
-  full_name='HelloMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='name', full_name='HelloMessage.name', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=49,
-  serialized_end=77,
-)
-
-
-_RESPONSEMESSAGE = descriptor.Descriptor(
-  name='ResponseMessage',
-  full_name='ResponseMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='nonce', full_name='ResponseMessage.nonce', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='name', full_name='ResponseMessage.name', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='response', full_name='ResponseMessage.response', index=2,
-      number=3, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=79,
-  serialized_end=143,
-)
-
-
-_TOKENMESSAGE = descriptor.Descriptor(
-  name='TokenMessage',
-  full_name='TokenMessage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='token', full_name='TokenMessage.token', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=145,
-  serialized_end=174,
+  serialized_start=148,
+  serialized_end=216,
 )
 
 
@@ -190,30 +64,30 @@ _AUTHMESSAGE = descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='challenge', full_name='AuthMessage.challenge', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='name', full_name='AuthMessage.name', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='response', full_name='AuthMessage.response', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='nonce', full_name='AuthMessage.nonce', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='token', full_name='AuthMessage.token', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='response', full_name='AuthMessage.response', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='hello', full_name='AuthMessage.hello', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='token', full_name='AuthMessage.token', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -234,45 +108,13 @@ _AUTHMESSAGE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=177,
-  serialized_end=450,
+  serialized_start=15,
+  serialized_end=216,
 )
 
 _AUTHMESSAGE.fields_by_name['type'].enum_type = _AUTHMESSAGE_TYPE
-_AUTHMESSAGE.fields_by_name['challenge'].message_type = _CHALLENGEMESSAGE
-_AUTHMESSAGE.fields_by_name['response'].message_type = _RESPONSEMESSAGE
-_AUTHMESSAGE.fields_by_name['token'].message_type = _TOKENMESSAGE
-_AUTHMESSAGE.fields_by_name['hello'].message_type = _HELLOMESSAGE
 _AUTHMESSAGE_TYPE.containing_type = _AUTHMESSAGE;
-DESCRIPTOR.message_types_by_name['ChallengeMessage'] = _CHALLENGEMESSAGE
-DESCRIPTOR.message_types_by_name['HelloMessage'] = _HELLOMESSAGE
-DESCRIPTOR.message_types_by_name['ResponseMessage'] = _RESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['TokenMessage'] = _TOKENMESSAGE
 DESCRIPTOR.message_types_by_name['AuthMessage'] = _AUTHMESSAGE
-
-class ChallengeMessage(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CHALLENGEMESSAGE
-  
-  # @@protoc_insertion_point(class_scope:ChallengeMessage)
-
-class HelloMessage(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _HELLOMESSAGE
-  
-  # @@protoc_insertion_point(class_scope:HelloMessage)
-
-class ResponseMessage(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _RESPONSEMESSAGE
-  
-  # @@protoc_insertion_point(class_scope:ResponseMessage)
-
-class TokenMessage(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _TOKENMESSAGE
-  
-  # @@protoc_insertion_point(class_scope:TokenMessage)
 
 class AuthMessage(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
