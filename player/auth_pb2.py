@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='auth.proto',
   package='',
-  serialized_pb='\n\nauth.proto\"\xc9\x01\n\x0b\x41uthMessage\x12\x1f\n\x04type\x18\x01 \x02(\x0e\x32\x11.AuthMessage.Type\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05nonce\x18\x03 \x01(\t\x12\x10\n\x08response\x18\x04 \x01(\t\x12\r\n\x05token\x18\x05 \x01(\t\x12\x15\n\rerror_message\x18\x06 \x01(\t\"D\n\x04Type\x12\r\n\tCHALLENGE\x10\x01\x12\x0c\n\x08RESPONSE\x10\x02\x12\t\n\x05TOKEN\x10\x03\x12\t\n\x05HELLO\x10\x04\x12\t\n\x05\x45RROR\x10\x05')
+  serialized_pb='\n\nauth.proto\"\xdc\x01\n\x0b\x41uthMessage\x12\x1f\n\x04type\x18\x01 \x02(\x0e\x32\x11.AuthMessage.Type\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05nonce\x18\x03 \x01(\t\x12\x11\n\tchallenge\x18\x04 \x01(\t\x12\x10\n\x08response\x18\x05 \x01(\t\x12\r\n\x05token\x18\x06 \x01(\t\x12\x15\n\rerror_message\x18\x07 \x01(\t\"D\n\x04Type\x12\r\n\tCHALLENGE\x10\x01\x12\x0c\n\x08RESPONSE\x10\x02\x12\t\n\x05TOKEN\x10\x03\x12\t\n\x05HELLO\x10\x04\x12\t\n\x05\x45RROR\x10\x05')
 
 
 
@@ -44,8 +44,8 @@ _AUTHMESSAGE_TYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=148,
-  serialized_end=216,
+  serialized_start=167,
+  serialized_end=235,
 )
 
 
@@ -78,22 +78,29 @@ _AUTHMESSAGE = descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='response', full_name='AuthMessage.response', index=3,
+      name='challenge', full_name='AuthMessage.challenge', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='token', full_name='AuthMessage.token', index=4,
+      name='response', full_name='AuthMessage.response', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='error_message', full_name='AuthMessage.error_message', index=5,
+      name='token', full_name='AuthMessage.token', index=5,
       number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='error_message', full_name='AuthMessage.error_message', index=6,
+      number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -109,7 +116,7 @@ _AUTHMESSAGE = descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=15,
-  serialized_end=216,
+  serialized_end=235,
 )
 
 _AUTHMESSAGE.fields_by_name['type'].enum_type = _AUTHMESSAGE_TYPE
