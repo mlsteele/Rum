@@ -5,7 +5,8 @@ message AuthMessage {
 	required Type type = 1;
     required string name = 2;
     optional string nonce = 3;
-    optional string response = 4;
-    optional string token = 5;
-    optional string error_message = 6;
+    optional string challenge = 4;
+    optional string response = 5;
+    optional string token = 6;
+    optional string error_message = 7;
 }
