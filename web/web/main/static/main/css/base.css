@@ -1,6 +1,6 @@
 header {
     background-color: #CB2E2B;
-    background-image: url('/static/img/donlan.png');
+    background-image: url('/static/main/img/donlan.png');
     background-repeat: no-repeat;
     background-position: right;
     color: #fff;
@@ -13,10 +13,10 @@ header a, header a:hover, header a:active {
 
 div#sign-in {
     padding-top: 20px;
-    text-align: center;
+    margin: 0 auto;
+    float: none;
 }
 
-a#menu-sign-out, a#menu-admin {
-    float: right;
-    margin-left: 3px;
+.navbar-inner {
+    border-radius: 0px;
 }
