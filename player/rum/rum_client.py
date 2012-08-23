@@ -13,14 +13,14 @@ class RumClient(threading.Thread):
         self.context = zmq.Context()
 
         self.auth_server = self.context.socket(zmq.REQ)
-        self.auth_server.connect("tcp://localhost:5000")
+        self.auth_server.connect("tcp://rum.mit.edu:5000")
 
         self.server = self.context.socket(zmq.SUB)
-        self.server.connect("tcp://localhost:5001")
+        self.server.connect("tcp://rum.mit.edu:5001")
         self.server.setsockopt(zmq.SUBSCRIBE, self.name)
 
         self.server_out = self.context.socket(zmq.PUB)
-        self.server_out.connect("tcp://localhost:5002")
+        self.server_out.connect("tcp://rum.mit.edu:5002")
 
     def authenticate(self):
         auth_message = auth_pb2.AuthMessage()
