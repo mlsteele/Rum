@@ -1,7 +1,6 @@
 import zmq, random, hashlib,  threading, time
 import json
 import protocol.auth_pb2 as auth_pb2
-import protocol.server_message_pb2 as server_message_pb2
 from rum_message import *
 from client import *
 from player_server import *
