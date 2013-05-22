@@ -91,6 +91,6 @@ if __name__ == '__main__' :
         print "Authenticated"
     r.setDaemon(True)
     r.start()
-    r.send_message("isaac", {"message": "test"})
+    r.send("isaac", {"message": "test"})
     while True:
         time.sleep(.1)

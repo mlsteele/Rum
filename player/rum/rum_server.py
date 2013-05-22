@@ -11,7 +11,7 @@ if __name__ == '__main__':
     rum_auth_server = AuthServer(clients_by_name)
     rum_auth_server.setDaemon(True)
     rum_auth_server.start()
-
+    
     rum_player_server = PlayerServer(rum_auth_server)
     rum_player_server.setDaemon(True)
     rum_player_server.start()
