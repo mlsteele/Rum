@@ -34,7 +34,7 @@ class RumMessage(object):
         self._update_payload()
 
     def serialize_to_multipart(self):
-        self._update_payload
+        self._update_payload()
         multipart = [self.dst, 
                      self.src,
                      self.security, 
