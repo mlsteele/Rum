@@ -1,10 +1,10 @@
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.dispatch import receiver
 from django_browserid import signals
 from web.main.models import Movie, MovieFile
-from . import settings
 
 def login(request):
     return render(request, 'main/login.html')
