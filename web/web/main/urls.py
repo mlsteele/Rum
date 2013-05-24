@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = patterns('',
     url(r'^browserid/', include('django_browserid.urls')),
+    url(r'^movies/download/(?P<file_pk>\d+)/$', views.movie_download, name='movie_download'),
     url(r'^movies/(?P<movie_pk>\d+)/$', views.movie, name='movie'),
     url(r'^movies/$', views.movies, name='movies'),
     url(r'^$', views.home, name='home'),

@@ -1,8 +1,10 @@
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.dispatch import receiver
 from django_browserid import signals
 from web.main.models import Movie, MovieFile
+from . import settings
 
 def login(request):
     return render(request, 'main/login.html')
@@ -27,6 +29,14 @@ def movie(request, movie_pk):
     movie = Movie.objects.get(pk=movie_pk)
     files = movie.moviefile_set.all()
     return render(request, 'main/movie.html', {'movie': movie, 'files': files})
+
+@login_required
+def movie_download(request, movie_file_pk):
+    movie_file = MovieFile.objects.get(pk=movie_file_pk)
+    movie_file.last_downloaded = datetime.now()
+    movie_file.times_downloaded += 1
+    movie_file.save()
+    return redirect(settings.MEDIA_URL + movie_file.filename)
 
 
 @receiver(signals.user_created)
