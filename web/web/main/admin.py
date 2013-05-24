@@ -1,5 +1,5 @@
 from django.contrib import admin
-from web.main.models import Movie, MovieFiles
+from web.main.models import Movie, MovieFile
 
 admin.site.register(Movie)
-admin.site.register(MovieFiles)
+admin.site.register(MovieFile)
