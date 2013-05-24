@@ -12,6 +12,9 @@ class Movie(models.Model):
     autoloaded   = models.BooleanField(default=False)
     date_added   = models.DateTimeField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.name
+
     def get_full_path(self):
         return os.path.join(self.MOVIE_ROOT, self.path)
 
@@ -25,6 +28,9 @@ class MovieFile(models.Model):
     times_downloaded = models.PositiveIntegerField(default=0)
 
     date_added       = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return str(self.movie.name) + self.get_full_path()
 
     def get_full_path(self):
         return os.path.join(self.movie.get_full_path(), self.filename)
