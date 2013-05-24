@@ -27,9 +27,10 @@ class Command(BaseCommand):
                     for f in list_subfiles(os.path.join(movie_root, letter_dir, movie_dir)):
                         extension = os.path.splitext(f)[1][1:]
                         print "    adding moviefile at %s with format=%s" %(f, extension)
-                        format = extension if len(extension) > 0 else 'unknown'
-                        moviefile = MovieFile(filename=f, format=format, movie=movie)
+                        fmt = extension if len(extension) > 0 else 'unknown'
+                        moviefile = MovieFile(filename=f, format=fmt, movie=movie)
                         moviefile.save()
                         print "    saving MovieFile..."
+            print "Done with movies!"
 
         load_movie_dir(args[0])
