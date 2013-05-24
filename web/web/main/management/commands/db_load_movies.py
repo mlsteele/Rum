@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from web.main.models import Movie
+from web.main.models import Movie, MovieFile
 
 import os, string
 
