@@ -30,7 +30,7 @@ class MovieFile(models.Model):
     date_added       = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return str(self.movie.name) + self.get_full_path()
+        return str(self.movie.name) + ' ' + self.get_full_path()
 
     def get_full_path(self):
         return os.path.join(self.movie.get_full_path(), self.filename)

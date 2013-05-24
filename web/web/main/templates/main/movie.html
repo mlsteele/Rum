@@ -1,0 +1,11 @@
+{% extends 'main/home.html' %}
+
+{% block content %}
+  <h1>{{ movie.name }}</h1>
+  {% for file in files %}
+    <hr />
+    <p>Download {{ file.filename }}</p>
+    <p>Last downloaded: {{ file.last_downloaded }}</p>
+    <p>Downloaded: {{ file.times_downloaded }} times</p>
+  {% endfor %}
+{% endblock %}

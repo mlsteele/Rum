@@ -22,6 +22,12 @@ def movies(request):
     movie_records = Movie.objects.all().order_by('name')
     return render(request, 'main/movies.html', {'movies': movie_records})
 
+@login_required
+def movie(request, movie_pk):
+    movie = Movie.objects.get(pk=movie_pk)
+    files = movie.moviefile_set.all()
+    return render(request, 'main/movie.html', {'movie': movie, 'files': files})
+
 
 @receiver(signals.user_created)
 def user_created(sender, user, **kwargs):
