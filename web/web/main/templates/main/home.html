@@ -1,6 +1,9 @@
 {% extends 'main/base.html' %}
 
 {% block menu %}
+  <ul class="nav pull-left">
+    <li><a href="{% url movies %}">Movies</a></li>
+  </ul>
   <ul class="nav pull-right">
     <li class="divider-vertical"></li>
     {% if user.is_staff %}

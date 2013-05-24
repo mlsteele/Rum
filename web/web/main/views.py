@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.dispatch import receiver
 from django_browserid import signals
+from web.main.models import Movie, MovieFile
 
 def login(request):
     return render(request, 'main/login.html')
@@ -10,9 +11,16 @@ def login(request):
 def login_failed(request):
     return render(request, 'main/login_failed.html')
 
+
 @login_required
 def home(request):
     return render(request, 'main/home.html')
+
+
+@login_required
+def movies(request):
+    movie_records = Movie.objects.all()
+    return render(request, 'main/movies.html', {'movies': movie_records})
 
 
 @receiver(signals.user_created)

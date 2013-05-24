@@ -1,0 +1,12 @@
+{% extends 'main/home.html' %}
+
+{% block content %}
+Movies:
+
+<ul>
+{% for m in movies %}
+  <li>{{ m.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
