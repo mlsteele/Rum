@@ -8,3 +8,4 @@ local.py
 wsgid.json
 rum.conf
 .DS_STORE
+/web/static/

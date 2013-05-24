@@ -4,15 +4,15 @@ from django.dispatch import receiver
 from django_browserid import signals
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'main/login.html')
 
 
 def login_failed(request):
-    return render(request, 'login_failed.html')
+    return render(request, 'main/login_failed.html')
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'main/home.html')
 
 
 @receiver(signals.user_created)
