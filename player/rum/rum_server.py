@@ -5,6 +5,7 @@ import time
 
 clients_by_name = {"isaac"  : Client("isaac", "pete"), 
                    "pete"   : Client("pete","pete"),
+                   "bemis"   : Client("pete","pete"),
                    "server" : Client("server", "password")}
 
 if __name__ == '__main__':
