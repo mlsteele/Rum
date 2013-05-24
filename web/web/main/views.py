@@ -2,9 +2,11 @@ import os
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.core.servers.basehttp import FileWrapper
+from django.shortcuts import render
 from django.dispatch import receiver
 from django_browserid import signals
+from django.http import HttpResponse
 from web.main.models import Movie, MovieFile
 
 def login(request):
@@ -37,8 +39,12 @@ def movie_download(request, file_pk):
     movie_file.last_downloaded = datetime.now()
     movie_file.times_downloaded += 1
     movie_file.save()
-    return redirect(os.path.join(settings.MEDIA_URL, movie_file.get_full_path()))
-
+    # Serve the file, securely.
+    file_path = os.path.join(settings.MEDIA_ROOT, movie_file.get_full_path())
+    wrapper = FileWrapper(file(file_path))
+    response = HttpResponse(wrapper, content_type='application/x-download')
+    response['Content-Length'] = os.path.getsize(file_path)
+    return response
 
 @receiver(signals.user_created)
 def user_created(sender, user, **kwargs):
