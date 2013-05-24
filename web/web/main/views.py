@@ -19,7 +19,7 @@ def home(request):
 
 @login_required
 def movies(request):
-    movie_records = Movie.objects.all()
+    movie_records = Movie.objects.all().order_by('name')
     return render(request, 'main/movies.html', {'movies': movie_records})
 
 
