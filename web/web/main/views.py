@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -36,7 +37,7 @@ def movie_download(request, file_pk):
     movie_file.last_downloaded = datetime.now()
     movie_file.times_downloaded += 1
     movie_file.save()
-    return redirect(settings.MEDIA_URL + movie_file.filename)
+    return redirect(os.path.join(settings.MEDIA_URL, movie_file.movie.path, movie_file.filename))
 
 
 @receiver(signals.user_created)
