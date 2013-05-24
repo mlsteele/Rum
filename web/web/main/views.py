@@ -31,8 +31,8 @@ def movie(request, movie_pk):
     return render(request, 'main/movie.html', {'movie': movie, 'files': files})
 
 @login_required
-def movie_download(request, movie_file_pk):
-    movie_file = MovieFile.objects.get(pk=movie_file_pk)
+def movie_download(request, file_pk):
+    movie_file = MovieFile.objects.get(pk=file_pk)
     movie_file.last_downloaded = datetime.now()
     movie_file.times_downloaded += 1
     movie_file.save()
