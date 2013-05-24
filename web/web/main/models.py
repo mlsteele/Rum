@@ -24,6 +24,7 @@ class MovieFile(models.Model):
     last_downloaded  = models.DateTimeField(null=True, blank=True)
     times_downloaded = models.PositiveIntegerField(default=0)
 
+    autoloaded       = models.BooleanField(default=False)
     date_added       = models.DateTimeField(auto_now_add=True)
 
     def get_full_path(self):
