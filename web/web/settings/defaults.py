@@ -6,11 +6,11 @@ def path(location):
     return os.path.join(PROJECT_MODULE, location)
 
 TEMPLATE_DIRS = (
-    path('music/templates')
+    path('main/templates')
 )
 
 STATICFILES_DIRS = (
-    path('music/static'),
+    path('main/static'),
 )
 
 TIME_ZONE = 'America/New_York'
@@ -33,6 +33,11 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django_browserid.context_processors.browserid_form',
+    'django.contrib.auth.context_processors.auth'
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,12 +47,17 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django_browserid.auth.BrowserIDBackend',
+)
+
 ROOT_URLCONF = 'web.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'django_browserid',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -55,5 +65,18 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
 
-    'web.music',
+    'web.main',
 )
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_REDIRECT_URL_FAILURE = '/login-failed/'
+
+BROWSERID_CREATE_USER = True
+
+def username(email):
+    return email.replace('@', '_')
+
+BROWSERID_USERNAME_ALGO = username

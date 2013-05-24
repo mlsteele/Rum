@@ -1,0 +1,6 @@
+message RumMessage {
+	enum Type {JSON = 0; BSON = 1; BINARY = 2; }
+	required Type type = 1;
+	optional bytes binary_payload = 2;
+	optional string payload = 3;
+}

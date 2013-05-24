@@ -1,23 +1,25 @@
 This setup guide assumes your build environment is setup, and you are running ubuntu
 
-Ubuntu: sudo apt-get install build-essential libtool autoconf automake 
+All commands should be run as a seprate user in production. Commands requiring sudo permissions 
+obviously are run as root...
+
+Ubuntu: sudo apt-get install build-essential libtool autoconf automake pkg-config
 
 == Install Mongrel2==
 
 
 	Install ZMQ
-		sudo apt-get install uuid-dev
-		sudo apt-get install libsqlite3-dev	
+		sudo apt-get install uuid-dev uuid-runtime libsqlite3-dev
 
-		sudo apt-get install uuid-runtime
 		wget http://download.zeromq.org/zeromq-2.2.0.tar.gz 
 		tar -xzvf zeromq-2.2.0.tar.gz
 		cd zeromq-2.2.0/
-		./configure
+		./configure --prefix=/path/to/rumenv
 		make 
 		sudo make install
 
 	Install Mongrel2
+		sudo apt-get install sqlite3
 		wget http://mongrel2.org/static/downloads/mongrel2-1.7.5.tar.bz2
 		tar -jxvf mongrel2-1.7.5.tar.bz2
 		cd mongrel2-1.7.5
@@ -25,23 +27,109 @@ Ubuntu: sudo apt-get install build-essential libtool autoconf automake
 		sudo make install
 
 
+virtualENV -- All our python stuff in manged in virutalenv.
+
+
+sudo apt-get install python-virtualenv python-pip
+sudo pip install virtualenvwrapper
+add this to  your .bashrc
+	export WORKON_HOME=~/.virtualenvs
+	source /usr/local/bin/virtualenvwrapper.sh
+
+
+mkvirtualenv prod
+
 	
 
 Install WSGID
-	wget http://wsgid.com/static/downloads/wsgid-0.7.0.tar.bz2
-	tar -jzvf wsgid-0.7.0.tar.bz2
-	cd wsgid-0.7.0
-	sudo python setup.py install
+	wsgid can be installed on a different computer as mongrel2, as long is they are 
+	connected
+	sudo apt-get install python-dev python-setuptools
+	workon prod 		# uses the virtual environemnt you created above
+	git clone git://github.com/igutekunst/wsgid.git
+	cd wsgid
+	sudo python setup.py intall 
 
-	(this requires python-dev and python-setuptools)
 
-virtualENV
+
+
+
+
 Install DJANGO
+	sudo apt-get install postgresql-server-dev-9.1 
+	cd rum/web		
+	sudo pip install -r requirements/prod.txt 
+	
 
-Install Postgresql
+Configure Postgresql and django
 http://blog.iiilx.com/programming/how-to-install-postgres-on-ubuntu-for-django/
+	sudo passwd postgres
+	sudo -u postgres createuser -P django_login
+	sudo su postgres
+
+	To enter a postgres shell type
+	psql template1	
+
+	Then 
+	CREATE DATABASE django_db OWNER django_login ENCODING 'UTF8';
 
 
-Setup usernames and passwords in django
+	Now edit  /etc/postgresql/9.1/main/pg_hba.conf 
+	sudo vim /etc/postgresql/9.1/main/pg_hba.conf 
+
+	And add the line 
+
+	local      django_db   django_login   md5
+	
+	after the postgresql user line
+
+
+	Restart postgres
+
+	sudo /etc/init.d/postgresql restart
+
+
+	CONFIGURING DJANGO
+
+	cd rum/web/web/settings 
+	cp local.py-dist local.py
+	edit local.py
+	Fill in the DB, username and password as created above
+
+	cd ../../
+	python manage.py syncdb
+	python mange.py migrate
+	DO NOT make any managment users. Our auth system works differently
+
+
+Configure WSGID	and Mongrel	
+cp rum/deploy/mongrel_wsgid/wsgid_app/wsgid.json-example rum/deploy/mongrel_wsgid/wsgid_app/wsgid.json
+
+cp rum/deploy/mongrel_wsgid/mongrel/rum.conf-example rum/deploy/mongrel_wsgid/mongrel/rum.conf
+
+
+Edit wsgid.json and rum.conf so that the send-spec of mongrel points at the recv entry in wsgid.json
+	and the recv-spec of mongrel matches the send entry in wsgid.json
+
+If your mongrel server and wsgid servers are running on the same machine, the example files work perfectly
+
+Create the sqlite db mongrel uses for runtime configuration
+cd rum/deploy/mongrel_wsgid/mongrel
+mkdir logs
+mkdir tmp
+mkdir run
+m2sh load -config rum.conf
+
+To test things out run m2sh start -name main
+cd rum/deploy/mongrel_wsgid/wsgid_app
+mkdir tmp
+mkdir logs
+wsgid --debug
+
+
+
+
+
+
 
 

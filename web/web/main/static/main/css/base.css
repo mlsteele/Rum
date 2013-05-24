@@ -1,0 +1,22 @@
+header {
+    background-color: #CB2E2B;
+    background-image: url('/static/main/img/donlan.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    color: #fff;
+    height: 60px;
+}
+
+header a, header a:hover, header a:active {
+    color: #fff;
+}
+
+div#sign-in {
+    padding-top: 20px;
+    margin: 0 auto;
+    float: none;
+}
+
+.navbar-inner {
+    border-radius: 0px;
+}

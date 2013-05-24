@@ -21,6 +21,8 @@ DATABASES = {
 
 DEBUG = TEMPLATE_DEBUG = False
 
+SITE_URL = 'http://example.com:8000'
+
 MEDIA_ROOT = 'media/'
 
 MEDIA_URL = 'media/'
