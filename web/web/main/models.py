@@ -16,7 +16,10 @@ class Movie(models.Model):
     times_downloaded = models.PositiveIntegerField(default=0)
 
     def get_full_path(self):
-        return os.path.join("/pants/Movies", self.dirname[0], self.dirname)
+        if self.dirname in range(10):
+            return os.path.join("/pants/Movies", "0-9", self.dirname)
+        else:
+            return os.path.join("/pants/Movies", self.dirname[0].upper(), self.dirname)
 
     def make_dirname(self):
         words = self.name.split(' ')
