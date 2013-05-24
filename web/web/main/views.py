@@ -37,7 +37,7 @@ def movie_download(request, file_pk):
     movie_file.last_downloaded = datetime.now()
     movie_file.times_downloaded += 1
     movie_file.save()
-    return redirect(os.path.join(settings.MEDIA_URL, movie_file.movie.path, movie_file.filename))
+    return redirect(os.path.join(settings.MEDIA_URL, movie_file.get_full_path()))
 
 
 @receiver(signals.user_created)

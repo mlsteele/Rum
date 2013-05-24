@@ -2,7 +2,7 @@ from django.db import models
 import os
 
 class Movie(models.Model):
-    MOVIE_ROOT = "/pants/Movies"
+    MOVIE_ROOT = "Movies"
 
     name         = models.CharField(max_length=255)
     path         = models.CharField(max_length=255) # path relative to MOVIE_ROOT to movie directory
